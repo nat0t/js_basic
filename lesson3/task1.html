@@ -10,9 +10,21 @@
 <body>
     <script>
         /* С помощью цикла while вывести все простые числа в промежутке от 0 до 100. */
-        let i = 0;
-        while (i <= 100) {
-            console.log(i++);
+        let n = 100;
+        let i = 2;
+        while (i <= n) {
+            let j = 2;
+            let simple = true;
+            while (j < i) {
+                if (i % j == 0) {
+                    simple = false;
+                    break;
+                }
+                j++;
+            }
+            if (simple == true)
+                console.log(i);
+            i++;
         }
     </script>
 </body>
