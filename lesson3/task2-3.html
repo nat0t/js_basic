@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const basket = [];
+        const product1 = { name: 'TV', price: 2000 };
+        const product2 = { name: 'PC', price: 4000 };
+        basket.push(product1);
+        basket.push(product2);
+        function countBasketPrice(basket) {
+            let total = 0;
+            for (const product in basket) {
+                total += basket[product].price;
+            }
+            return total;
+        }
+        console.log(countBasketPrice(basket));
+    </script>
+</body>
+
+</html>
