@@ -5,12 +5,17 @@ const equals3 = (a, b, c) => {
 const checkWinner = (model) => {
   let winner = null;
 
+  // tie
+  if (model[0].includes('') == false && model[1].includes('') == false && model[2].includes('') == false) {
+    winner = 'nobody';
+  }
+
   // horizontal
   for (let i = 0; i < 3; i++) {
     if (equals3(model[i][0], model[i][1], model[i][2])) {
       winner = model[i][0];
     }
-  }  
+  }
 
   // vertical
   for (let i = 0; i < 3; i++) {
@@ -26,9 +31,9 @@ const checkWinner = (model) => {
   if (equals3(model[0][2], model[1][1], model[2][0])) {
     winner = model[0][2];
   }
-
   return winner;
-}
+};
+
 
 const game = () => {
   const model = [
@@ -61,17 +66,16 @@ const game = () => {
   $table.addEventListener('click', (e) => {
     const row = e.target.parentNode.dataset.index;
     const column = e.target.dataset.index;
-
-    // 2. check if td assigned
-
-    model[row][column] = currentPlayer;
-    e.target.innerHTML = currentPlayer;
+    // check if td assigned
+    if (model[row][column] === '') {
+      model[row][column] = currentPlayer;
+      e.target.innerHTML = currentPlayer;
+    }
 
     const winner = checkWinner(model);
     if (winner) {
       alert(`Winner: ${winner}`);
     }
-    // 1. tie
 
     currentPlayer = currentPlayer === playerX ? playerO : playerX;
   });
